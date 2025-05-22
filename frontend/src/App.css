@@ -1,0 +1,208 @@
+/* frontend/src/App.css */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa; /* Lighter background for the entire page */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 20px; /* Overall padding for the page content */
+  box-sizing: border-box;
+}
+
+/* Main Container for the two columns */
+.App-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+    justify-content: center;
+    width: 100%; /* Take full width of parent (body padding applied) */
+    max-width: 1300px; /* Max width for the entire app, adjust as needed */
+    gap: 25px; /* Space between columns */
+}
+
+/* Styles for individual columns */
+.App-column {
+    background-color: #ffffff; /* White background for each column card */
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    box-sizing: border-box;
+    flex: 1; /* Allow columns to grow */
+    min-width: 380px; /* Minimum width for each column before wrapping */
+    max-width: 600px; /* Max width for left column */
+}
+
+/* Specific adjustments for the right column to ensure it doesn't get too wide */
+.App-column.right-panel {
+    max-width: 450px; /* Max width for the right panel */
+}
+
+
+h1 {
+  color: #006b6b; /* Dark Teal for the main title */
+  margin-bottom: 30px;
+  font-size: 2.2em;
+  font-weight: 600;
+}
+
+h2 { /* New style for sub-headings like "Pending Tasks" */
+    color: #34495e; /* Darker grey-blue for section titles */
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: 500;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+/* General button styles (already defined, ensure consistency) */
+button {
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* Specific styling for the message box */
+.message-box {
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: left;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.message-box.success {
+  background-color: #e6ffe6;
+  color: #1a661a;
+  border: 1px solid #b3e6b3;
+}
+
+.message-box.error {
+  background-color: #ffe6e6;
+  color: #a32d2d;
+  border: 1px solid #e6b3b3;
+}
+
+/* Loading/No Todos message styles */
+p {
+  color: #666;
+  font-style: italic;
+}
+
+/* Specific styles for priority lists */
+.priority-list h3 {
+    color: #555;
+    font-size: 1.3em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #ccc;
+    text-align: left;
+}
+
+.priority-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.priority-list li {
+    background-color: #fbfbfb; /* Very light background for items */
+    border: 1px solid #eee;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    text-align: left;
+    color: #444;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.priority-list li span {
+    flex-grow: 1;
+}
+
+.priority-list li.completed {
+    text-decoration: line-through;
+    color: #888;
+    background-color: #e9e9e9;
+}
+
+/* Priority specific colors for the label/dot */
+.priority-high {
+    color: #d9534f; /* Red */
+    font-weight: bold;
+}
+.priority-medium {
+    color: #f0ad4e; /* Orange */
+    font-weight: bold;
+}
+.priority-low {
+    color: #5bc0de; /* Light blue */
+    font-weight: bold;
+}
+
+/* Popup Overlay - Makes the background dark and centers the content */
+.popup-overlay {
+    position: fixed; /* Stays in place even when scrolling */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+    display: flex; /* Use flexbox to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 1000; /* Ensure it's on top of other content, like todos */
+}
+
+/* Popup Content Box - The actual white box with summary */
+.popup-content {
+    background-color: white;
+    padding: 30px; /* Space inside the box */
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+    max-width: 500px; /* Maximum width of the popup */
+    width: 90%; /* Take 90% of screen width on smaller screens */
+    text-align: center; /* Center text inside the box */
+    position: relative;
+    color: #333; /* Dark gray text color */
+}
+
+.popup-content h2 {
+    color: #4CAF50; /* Green heading for "Summary" */
+    margin-bottom: 15px; /* Space below the heading */
+}
+
+.popup-content p {
+    font-size: 1.1em; /* Slightly larger text for the summary */
+    line-height: 1.5; /* Good spacing between lines */
+    margin-bottom: 20px; /* Space below the summary text */
+}
+
+.popup-content button {
+    background-color: #007bff; /* Blue background for the close button */
+    color: white; /* White text on the button */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding inside the button */
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer; /* Changes mouse cursor to a pointer when hovering */
+    font-size: 1em; /* Standard font size */
+    transition: background-color 0.3s ease; /* Smooth color change on hover */
+}
+
+.popup-content button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
